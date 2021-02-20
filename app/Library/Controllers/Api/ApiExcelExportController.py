@@ -3,8 +3,11 @@ from Library.models   import Book
 from django.shortcuts import get_object_or_404
 import time
 import string
-
+import environ
 import xlsxwriter
+
+env = environ.Env()
+environ.Env.read_env()
 
 cells_literals = string.ascii_uppercase
 EXT            = '.xlsx'
@@ -12,7 +15,7 @@ STORAGE        = 'Library/storage/'
 
 def exportBook(request, id):
     current_literal = 0
-    file_name       = time.strftime("%H%M%S") + EXT
+    file_name       = env('EXCEL_EXPORT_NAME') + EXT
 
     book  = get_object_or_404(Book, pk = id)
     cells = {
