@@ -1,7 +1,7 @@
 from Library.forms    import BookForm
 from Library.models   import Book
 from django.shortcuts import get_object_or_404, redirect
-from django.http      import JsonResponse
+from django.http      import JsonResponse, HttpResponse
 from django.core      import serializers
 
 
@@ -24,7 +24,8 @@ def deleteBook(request, id):
     return redirectToList()
 
 def getList(request):
-    return Book.objects.filter()
+    books = serializers.serialize('json', Book.objects.all())
+    return HttpResponse(books, content_type='json')
 
 def redirectToList():
     return redirect('/')

@@ -16,8 +16,5 @@ class BookForm(forms.ModelForm):
         ]
 
     pub_date = forms.DateField(
-        widget=forms.SelectDateWidget(
-            years=range(0, datetime.now().year + 50)
-        ),
-        initial=datetime.now().year,
+        widget=forms.SelectDateWidget(years=range(1, datetime.now().year + 50))
     )
