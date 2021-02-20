@@ -1,0 +1,15 @@
+{% extends 'Container.html' %}
+
+{% block container_content %}
+    {% if books %}
+        <ul class="list-group">
+            {% for book in books %}
+                <li class='list-group-item'>
+                    {% include 'Book/BookInList.html' with book=book only %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>Книги не найдены</h2>
+    {% endif %}
+{% endblock container_content %}

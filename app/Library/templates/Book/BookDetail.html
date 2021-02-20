@@ -1,0 +1,26 @@
+{% extends 'Container.html' %}
+
+{% block container_content %}
+    <h4>Название: {{ book.title }}</h4>
+    <h4>Автор: {{ book.author.first_name }} {{ book.author.last_name }}</h4>
+    <h4>Издатель: {{ book.publisher }}</h4>
+    <h4>Год Выпуска: {{ book.pub_date|date:'Y' }}</h4>
+    <h4>Тип Обложки: {{ book.cover_type }}</h4>
+    <h4>Количество Страниц: {{ book.page_count }}</h4>
+
+    <div class='d-flex gap-3'>
+        <form method='post' action='{% url 'api-book-delete' id=book.id %}'>
+            <button type="submit" class="btn btn-danger mt=3">Удалить</button>
+            {% csrf_token %}
+
+        </form>
+        <a href={% url 'update' id=book.id %}>
+            <button type="button" class="btn btn-primary mt=3">Редактировать</button>
+        </a>
+        <form method='post' action='{% url 'api-export-book' id=book.id %}' target='_blank'>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary mt=3">Экспортировать в Excel</button>
+        </form>
+    </div>
+
+{% endblock container_content %}
