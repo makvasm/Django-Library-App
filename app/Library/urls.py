@@ -1,12 +1,10 @@
 from django.urls import path
 
-from . import views, api
-
 from .Controllers     import BookController
 from .Controllers.Api import ApiBookController, ApiExcelExportController
 
 urlpatterns = [
-    path('', views.list, name='list'),
+    path('',                BookController.list, name='list'),
     path('<int:id>/detail', BookController.detail, name='detail'),
     path('create/',         BookController.create, name='create'),
     path('<int:id>/update', BookController.update, name='update'),

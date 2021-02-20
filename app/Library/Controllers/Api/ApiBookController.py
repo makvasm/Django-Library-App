@@ -24,7 +24,7 @@ def deleteBook(request, id):
     return redirectToList()
 
 def getList(request):
-    return redirectToList()
+    return Book.objects.filter()
 
 def redirectToList():
     return redirect('/')
