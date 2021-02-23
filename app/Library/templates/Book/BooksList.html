@@ -12,4 +12,5 @@
     {% else %}
         <h2>Книги не найдены</h2>
     {% endif %}
+    {% include 'Paginator.html' with pages=pages %}
 {% endblock container_content %}

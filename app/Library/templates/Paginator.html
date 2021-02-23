@@ -1,0 +1,7 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center p-3">
+    {% for i in pages.page_range %}
+        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>

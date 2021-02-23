@@ -1,12 +1,19 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts      import render, get_object_or_404
+from django.core.paginator import Paginator
 
 from Library.models import Book, Author
 from Library.forms  import BookForm
 
+per_page = 2
+
 def list(request):
-    books = Book.objects.filter()
-    context = {
-        'books': books
+    page_number = request.GET.get('page', 1)
+    books       = Book.objects.filter()
+    pages       = Paginator(books, per_page)
+    books       = pages.get_page(page_number)
+    context     = {
+        'books': books,
+        'pages': pages
     }
     return render(request, 'Book/BooksList.html', context)
 
