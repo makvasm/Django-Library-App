@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from Library.models import Book, Author
 from Library.forms  import BookForm
 
-per_page = 2
+per_page = 5
 
 def list(request):
     page_number = request.GET.get('page', 1)

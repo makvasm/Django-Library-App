@@ -4,10 +4,10 @@ from .Controllers     import BookController
 from .Controllers.Api import ApiBookController, ApiExcelExportController
 
 urlpatterns = [
-    path('',                BookController.list, name='list'),
-    path('<int:id>/detail', BookController.detail, name='detail'),
-    path('create/',         BookController.create, name='create'),
-    path('<int:id>/update', BookController.update, name='update'),
+    path('',                BookController.list, name='book-list'),
+    path('<int:id>/detail', BookController.detail, name='book-detail'),
+    path('create/',         BookController.create, name='book-create'),
+    path('<int:id>/update', BookController.update, name='book-update'),
 
     path('api/book/<int:id>/update', ApiBookController.updateBook,        name='api-book-update'),
     path('api/book/<int:id>/delete', ApiBookController.deleteBook,        name='api-book-delete'),

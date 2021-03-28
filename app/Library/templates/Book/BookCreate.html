@@ -3,8 +3,7 @@
 {% block container_content %}
     <form method="post" action="{% url 'api-book-create' %}">
         {% csrf_token %}
-        {{ form.as_ul }}
+        {{ form.as_p }}
     <button type="submit" class="btn btn-success mt-3">Сохранить</button>
-
     </form>
 {% endblock container_content %}

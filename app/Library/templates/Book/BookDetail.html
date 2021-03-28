@@ -14,7 +14,7 @@
             {% csrf_token %}
 
         </form>
-        <a href={% url 'update' id=book.id %}>
+        <a href={% url 'book-update' id=book.id %}>
             <button type="button" class="btn btn-primary mt=3">Редактировать</button>
         </a>
         <form method='post' action='{% url 'api-export-book' id=book.id %}' target='_blank'>
